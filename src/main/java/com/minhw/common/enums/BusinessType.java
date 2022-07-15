@@ -55,4 +55,8 @@ public enum BusinessType {
      * 清空数据
      */
     CLEAN,
+    /**
+     * 前台访问
+     */
+    VISIT,
 }
