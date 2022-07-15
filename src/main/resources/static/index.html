@@ -11,16 +11,16 @@
 </head>
 
 <body>
-<h4>输入考生号或身份证号查询录取专业</h4>
-<h5>录取通知书快递单号仅支持考生号查询</h5>
+
+
 <br/>
 <label for="ksh" title="考生号">考生号
     <input type="text" placeholder="请输入考生号" id="ksh">
 </label>
-<br/>
-<label for="sfzh" title="身份证号">身份证号
-    <input type="text" placeholder="请输入身份证号" id="sfzh">
-</label>
+<!--<br/>-->
+<!--<label for="sfzh" title="身份证号">身份证号-->
+<!--    <input type="text" placeholder="请输入身份证号" id="sfzh">-->
+<!--</label>-->
 <br/>
 <input type="button" value="查询录取专业" onclick="getZy()">
 <input type="button" value="查询通知书单号" onclick="getKddh()">
@@ -29,7 +29,7 @@
 </body>
 <script>
 <!--  临时使用  -->
-    const urlT = "/";
+    const urlT = "/api/";
 
     function getKddh() {
         // 发送post请求
@@ -85,7 +85,7 @@
         // post方式要设置请求头
         xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
         // 参数设置在send里面，参数+值
-        xhr.send("ksh=" + document.getElementById("ksh").value + "&sfzh=" + document.getElementById("sfzh").value)
+        xhr.send("ksh=" + document.getElementById("ksh").value )
     }
 </script>
 </html>

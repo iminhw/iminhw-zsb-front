@@ -33,14 +33,8 @@
         select
         <include refid="Base_Column_List"/>
         from stu_matriculate
-        <where>
-            <if test="ksh != null">
-                or ksh = #{ksh,jdbcType=VARCHAR}
-            </if>
-            <if test="sfzh != null">
-                or sfzh = #{sfzh,jdbcType=VARCHAR}
-            </if>
-        </where>
+        where
+        ksh = #{ksh,jdbcType=VARCHAR}
     </select>
 
 
