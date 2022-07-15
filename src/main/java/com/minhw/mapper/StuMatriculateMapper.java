@@ -9,9 +9,7 @@ public interface StuMatriculateMapper {
 //
 //    int insertSelective(StuMatriculate record);
 //
-//    StuMatriculate selectByPrimaryKey(String ksh);
-
-    StuMatriculate selectByKshOrSfzh(StuMatriculate stuMatriculate);
+    StuMatriculate selectByPrimaryKey(String ksh);
 
 //    int updateByPrimaryKeySelective(StuMatriculate record);
 //

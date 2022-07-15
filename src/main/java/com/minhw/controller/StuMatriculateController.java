@@ -29,7 +29,7 @@ public class StuMatriculateController {
     @Log(title="查询录取专业")
     @PostMapping("/matriculate")
     public ResultVo GetMatriculate(StuMatriculate stuMatriculate){
-        return ResultVoUtil.success("操作成功",stuMatriculateService.selectByKshOrSfzh(stuMatriculate));
+        return ResultVoUtil.success("操作成功",stuMatriculateService.selectByPrimaryKey(stuMatriculate.getKsh()));
     }
 
     @GetMapping ("/matriculate")

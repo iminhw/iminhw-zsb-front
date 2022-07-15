@@ -20,7 +20,7 @@ public class StuMatriculateServiceImp implements StuMatriculateService {
 
 
     @Override
-    public StuMatriculate selectByKshOrSfzh(StuMatriculate stuMatriculate) {
-        return stuMatriculateMapper.selectByKshOrSfzh(stuMatriculate);
+    public StuMatriculate selectByPrimaryKey(String ksh) {
+        return stuMatriculateMapper.selectByPrimaryKey(ksh);
     }
 }

@@ -27,7 +27,7 @@
         select
         <include refid="Base_Column_List"/>
         from stu_out_notification
-        where ksh = #{ksh,jdbcType=VARCHAR}
+        where ksh = #{ksh,jdbcType=VARCHAR} and status = 0;
     </select>
 
 </mapper>
