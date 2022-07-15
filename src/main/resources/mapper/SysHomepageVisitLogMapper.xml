@@ -1,201 +1,192 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.minhw.mapper.SysHomepageVisitLogMapper">
-  <resultMap id="BaseResultMap" type="com.minhw.entity.SysHomepageVisitLog">
-    <constructor>
-      <idArg column="visit_id" javaType="java.lang.Long" jdbcType="BIGINT" />
-      <arg column="title" javaType="java.lang.String" jdbcType="VARCHAR" />
-      <arg column="business_type" javaType="java.lang.Integer" jdbcType="INTEGER" />
-      <arg column="method" javaType="java.lang.String" jdbcType="VARCHAR" />
-      <arg column="request_method" javaType="java.lang.String" jdbcType="VARCHAR" />
-      <arg column="operator_type" javaType="java.lang.Integer" jdbcType="INTEGER" />
-      <arg column="oper_url" javaType="java.lang.String" jdbcType="VARCHAR" />
-      <arg column="oper_ip" javaType="java.lang.String" jdbcType="VARCHAR" />
-      <arg column="oper_location" javaType="java.lang.String" jdbcType="VARCHAR" />
-      <arg column="oper_param" javaType="java.lang.String" jdbcType="VARCHAR" />
-      <arg column="json_result" javaType="java.lang.String" jdbcType="VARCHAR" />
-      <arg column="status" javaType="java.lang.Integer" jdbcType="INTEGER" />
-      <arg column="error_msg" javaType="java.lang.String" jdbcType="VARCHAR" />
-      <arg column="visit_time" javaType="java.util.Date" jdbcType="TIMESTAMP" />
-    </constructor>
-  </resultMap>
-  <sql id="Base_Column_List">
-    visit_id, title, business_type, method, request_method, operator_type, oper_url, 
-    oper_ip, oper_location, oper_param, json_result, status, error_msg, visit_time
-  </sql>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
-    select 
-    <include refid="Base_Column_List" />
-    from sys_homepage_visit_log
-    where visit_id = #{visitId,jdbcType=BIGINT}
-  </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
-    delete from sys_homepage_visit_log
-    where visit_id = #{visitId,jdbcType=BIGINT}
-  </delete>
-  <insert id="insert" parameterType="com.minhw.entity.SysHomepageVisitLog">
-    insert into sys_homepage_visit_log (visit_id, title, business_type, 
-      method, request_method, operator_type, 
-      oper_url, oper_ip, oper_location, 
-      oper_param, json_result, status, 
-      error_msg, visit_time)
-    values (#{visitId,jdbcType=BIGINT}, #{title,jdbcType=VARCHAR}, #{businessType,jdbcType=INTEGER}, 
-      #{method,jdbcType=VARCHAR}, #{requestMethod,jdbcType=VARCHAR}, #{operatorType,jdbcType=INTEGER}, 
-      #{operUrl,jdbcType=VARCHAR}, #{operIp,jdbcType=VARCHAR}, #{operLocation,jdbcType=VARCHAR}, 
-      #{operParam,jdbcType=VARCHAR}, #{jsonResult,jdbcType=VARCHAR}, #{status,jdbcType=INTEGER}, 
-      #{errorMsg,jdbcType=VARCHAR}, sysdate())
-  </insert>
-  <insert id="insertSelective" parameterType="com.minhw.entity.SysHomepageVisitLog">
-    insert into sys_homepage_visit_log
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="visitId != null">
-        visit_id,
-      </if>
-      <if test="title != null">
-        title,
-      </if>
-      <if test="businessType != null">
-        business_type,
-      </if>
-      <if test="method != null">
-        method,
-      </if>
-      <if test="requestMethod != null">
-        request_method,
-      </if>
-      <if test="operatorType != null">
-        operator_type,
-      </if>
-      <if test="operUrl != null">
-        oper_url,
-      </if>
-      <if test="operIp != null">
-        oper_ip,
-      </if>
-      <if test="operLocation != null">
-        oper_location,
-      </if>
-      <if test="operParam != null">
-        oper_param,
-      </if>
-      <if test="jsonResult != null">
-        json_result,
-      </if>
-      <if test="status != null">
-        status,
-      </if>
-      <if test="errorMsg != null">
-        error_msg,
-      </if>
-      <if test="visitTime != null">
-        visit_time,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="visitId != null">
-        #{visitId,jdbcType=BIGINT},
-      </if>
-      <if test="title != null">
-        #{title,jdbcType=VARCHAR},
-      </if>
-      <if test="businessType != null">
-        #{businessType,jdbcType=INTEGER},
-      </if>
-      <if test="method != null">
-        #{method,jdbcType=VARCHAR},
-      </if>
-      <if test="requestMethod != null">
-        #{requestMethod,jdbcType=VARCHAR},
-      </if>
-      <if test="operatorType != null">
-        #{operatorType,jdbcType=INTEGER},
-      </if>
-      <if test="operUrl != null">
-        #{operUrl,jdbcType=VARCHAR},
-      </if>
-      <if test="operIp != null">
-        #{operIp,jdbcType=VARCHAR},
-      </if>
-      <if test="operLocation != null">
-        #{operLocation,jdbcType=VARCHAR},
-      </if>
-      <if test="operParam != null">
-        #{operParam,jdbcType=VARCHAR},
-      </if>
-      <if test="jsonResult != null">
-        #{jsonResult,jdbcType=VARCHAR},
-      </if>
-      <if test="status != null">
-        #{status,jdbcType=INTEGER},
-      </if>
-      <if test="errorMsg != null">
-        #{errorMsg,jdbcType=VARCHAR},
-      </if>
-      <if test="visitTime != null">
-        #{visitTime,jdbcType=TIMESTAMP},
-      </if>
-    </trim>
-  </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.minhw.entity.SysHomepageVisitLog">
-    update sys_homepage_visit_log
-    <set>
-      <if test="title != null">
-        title = #{title,jdbcType=VARCHAR},
-      </if>
-      <if test="businessType != null">
-        business_type = #{businessType,jdbcType=INTEGER},
-      </if>
-      <if test="method != null">
-        method = #{method,jdbcType=VARCHAR},
-      </if>
-      <if test="requestMethod != null">
-        request_method = #{requestMethod,jdbcType=VARCHAR},
-      </if>
-      <if test="operatorType != null">
-        operator_type = #{operatorType,jdbcType=INTEGER},
-      </if>
-      <if test="operUrl != null">
-        oper_url = #{operUrl,jdbcType=VARCHAR},
-      </if>
-      <if test="operIp != null">
-        oper_ip = #{operIp,jdbcType=VARCHAR},
-      </if>
-      <if test="operLocation != null">
-        oper_location = #{operLocation,jdbcType=VARCHAR},
-      </if>
-      <if test="operParam != null">
-        oper_param = #{operParam,jdbcType=VARCHAR},
-      </if>
-      <if test="jsonResult != null">
-        json_result = #{jsonResult,jdbcType=VARCHAR},
-      </if>
-      <if test="status != null">
-        status = #{status,jdbcType=INTEGER},
-      </if>
-      <if test="errorMsg != null">
-        error_msg = #{errorMsg,jdbcType=VARCHAR},
-      </if>
-      <if test="visitTime != null">
-        visit_time = #{visitTime,jdbcType=TIMESTAMP},
-      </if>
-    </set>
-    where visit_id = #{visitId,jdbcType=BIGINT}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="com.minhw.entity.SysHomepageVisitLog">
-    update sys_homepage_visit_log
-    set title = #{title,jdbcType=VARCHAR},
-      business_type = #{businessType,jdbcType=INTEGER},
-      method = #{method,jdbcType=VARCHAR},
-      request_method = #{requestMethod,jdbcType=VARCHAR},
-      operator_type = #{operatorType,jdbcType=INTEGER},
-      oper_url = #{operUrl,jdbcType=VARCHAR},
-      oper_ip = #{operIp,jdbcType=VARCHAR},
-      oper_location = #{operLocation,jdbcType=VARCHAR},
-      oper_param = #{operParam,jdbcType=VARCHAR},
-      json_result = #{jsonResult,jdbcType=VARCHAR},
-      status = #{status,jdbcType=INTEGER},
-      error_msg = #{errorMsg,jdbcType=VARCHAR},
-      visit_time = #{visitTime,jdbcType=TIMESTAMP}
-    where visit_id = #{visitId,jdbcType=BIGINT}
-  </update>
+    <resultMap id="BaseResultMap" type="com.minhw.entity.SysHomepageVisitLog">
+        <constructor>
+            <idArg column="visit_id" javaType="java.lang.Long" jdbcType="BIGINT"/>
+            <arg column="title" javaType="java.lang.String" jdbcType="VARCHAR"/>
+            <arg column="business_type" javaType="java.lang.Integer" jdbcType="INTEGER"/>
+            <arg column="method" javaType="java.lang.String" jdbcType="VARCHAR"/>
+            <arg column="request_method" javaType="java.lang.String" jdbcType="VARCHAR"/>
+            <arg column="visit_url" javaType="java.lang.String" jdbcType="VARCHAR"/>
+            <arg column="visit_ip" javaType="java.lang.String" jdbcType="VARCHAR"/>
+            <arg column="visit_location" javaType="java.lang.String" jdbcType="VARCHAR"/>
+            <arg column="visit_param" javaType="java.lang.String" jdbcType="VARCHAR"/>
+            <arg column="json_result" javaType="java.lang.String" jdbcType="VARCHAR"/>
+            <arg column="status" javaType="java.lang.Integer" jdbcType="INTEGER"/>
+            <arg column="error_msg" javaType="java.lang.String" jdbcType="VARCHAR"/>
+            <arg column="visit_time" javaType="java.util.Date" jdbcType="TIMESTAMP"/>
+        </constructor>
+    </resultMap>
+    <sql id="Base_Column_List">
+        visit_id
+        , title, business_type, method, request_method, visit_url, visit_ip, visit_location,
+    visit_param, json_result, status, error_msg, visit_time
+    </sql>
+    <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from sys_homepage_visit_log
+        where visit_id = #{visitId,jdbcType=BIGINT}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+        delete
+        from sys_homepage_visit_log
+        where visit_id = #{visitId,jdbcType=BIGINT}
+    </delete>
+    <insert id="insert" parameterType="com.minhw.entity.SysHomepageVisitLog">
+        insert into sys_homepage_visit_log (visit_id, title, business_type,
+                                            method, request_method, visit_url,
+                                            visit_ip, visit_location, visit_param,
+                                            json_result, status, error_msg,
+                                            visit_time)
+        values (#{visitId,jdbcType=BIGINT}, #{title,jdbcType=VARCHAR}, #{businessType,jdbcType=INTEGER},
+                #{method,jdbcType=VARCHAR}, #{requestMethod,jdbcType=VARCHAR}, #{visitUrl,jdbcType=VARCHAR},
+                #{visitIp,jdbcType=VARCHAR}, #{visitLocation,jdbcType=VARCHAR}, #{visitParam,jdbcType=VARCHAR},
+                #{jsonResult,jdbcType=VARCHAR}, #{status,jdbcType=INTEGER}, #{errorMsg,jdbcType=VARCHAR},
+                sysdate())
+    </insert>
+    <insert id="insertSelective" parameterType="com.minhw.entity.SysHomepageVisitLog">
+        insert into sys_homepage_visit_log
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="visitId != null">
+                visit_id,
+            </if>
+            <if test="title != null">
+                title,
+            </if>
+            <if test="businessType != null">
+                business_type,
+            </if>
+            <if test="method != null">
+                method,
+            </if>
+            <if test="requestMethod != null">
+                request_method,
+            </if>
+            <if test="visitUrl != null">
+                visit_url,
+            </if>
+            <if test="visitIp != null">
+                visit_ip,
+            </if>
+            <if test="visitLocation != null">
+                visit_location,
+            </if>
+            <if test="visitParam != null">
+                visit_param,
+            </if>
+            <if test="jsonResult != null">
+                json_result,
+            </if>
+            <if test="status != null">
+                status,
+            </if>
+            <if test="errorMsg != null">
+                error_msg,
+            </if>
+            <if test="visitTime != null">
+                visit_time,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="visitId != null">
+                #{visitId,jdbcType=BIGINT},
+            </if>
+            <if test="title != null">
+                #{title,jdbcType=VARCHAR},
+            </if>
+            <if test="businessType != null">
+                #{businessType,jdbcType=INTEGER},
+            </if>
+            <if test="method != null">
+                #{method,jdbcType=VARCHAR},
+            </if>
+            <if test="requestMethod != null">
+                #{requestMethod,jdbcType=VARCHAR},
+            </if>
+            <if test="visitUrl != null">
+                #{visitUrl,jdbcType=VARCHAR},
+            </if>
+            <if test="visitIp != null">
+                #{visitIp,jdbcType=VARCHAR},
+            </if>
+            <if test="visitLocation != null">
+                #{visitLocation,jdbcType=VARCHAR},
+            </if>
+            <if test="visitParam != null">
+                #{visitParam,jdbcType=VARCHAR},
+            </if>
+            <if test="jsonResult != null">
+                #{jsonResult,jdbcType=VARCHAR},
+            </if>
+            <if test="status != null">
+                #{status,jdbcType=INTEGER},
+            </if>
+            <if test="errorMsg != null">
+                #{errorMsg,jdbcType=VARCHAR},
+            </if>
+            <if test="visitTime != null">
+                #{visitTime,jdbcType=TIMESTAMP},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.minhw.entity.SysHomepageVisitLog">
+        update sys_homepage_visit_log
+        <set>
+            <if test="title != null">
+                title = #{title,jdbcType=VARCHAR},
+            </if>
+            <if test="businessType != null">
+                business_type = #{businessType,jdbcType=INTEGER},
+            </if>
+            <if test="method != null">
+                method = #{method,jdbcType=VARCHAR},
+            </if>
+            <if test="requestMethod != null">
+                request_method = #{requestMethod,jdbcType=VARCHAR},
+            </if>
+            <if test="visitUrl != null">
+                visit_url = #{visitUrl,jdbcType=VARCHAR},
+            </if>
+            <if test="visitIp != null">
+                visit_ip = #{visitIp,jdbcType=VARCHAR},
+            </if>
+            <if test="visitLocation != null">
+                visit_location = #{visitLocation,jdbcType=VARCHAR},
+            </if>
+            <if test="visitParam != null">
+                visit_param = #{visitParam,jdbcType=VARCHAR},
+            </if>
+            <if test="jsonResult != null">
+                json_result = #{jsonResult,jdbcType=VARCHAR},
+            </if>
+            <if test="status != null">
+                status = #{status,jdbcType=INTEGER},
+            </if>
+            <if test="errorMsg != null">
+                error_msg = #{errorMsg,jdbcType=VARCHAR},
+            </if>
+            <if test="visitTime != null">
+                visit_time = #{visitTime,jdbcType=TIMESTAMP},
+            </if>
+        </set>
+        where visit_id = #{visitId,jdbcType=BIGINT}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.minhw.entity.SysHomepageVisitLog">
+        update sys_homepage_visit_log
+        set title          = #{title,jdbcType=VARCHAR},
+            business_type  = #{businessType,jdbcType=INTEGER},
+            method         = #{method,jdbcType=VARCHAR},
+            request_method = #{requestMethod,jdbcType=VARCHAR},
+            visit_url      = #{visitUrl,jdbcType=VARCHAR},
+            visit_ip       = #{visitIp,jdbcType=VARCHAR},
+            visit_location = #{visitLocation,jdbcType=VARCHAR},
+            visit_param    = #{visitParam,jdbcType=VARCHAR},
+            json_result    = #{jsonResult,jdbcType=VARCHAR},
+            status         = #{status,jdbcType=INTEGER},
+            error_msg      = #{errorMsg,jdbcType=VARCHAR},
+            visit_time     = #{visitTime,jdbcType=TIMESTAMP}
+        where visit_id = #{visitId,jdbcType=BIGINT}
+    </update>
 </mapper>

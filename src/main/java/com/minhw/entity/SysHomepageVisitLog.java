@@ -14,15 +14,13 @@ public class SysHomepageVisitLog implements Serializable {
 
     private String requestMethod;
 
-    private Integer operatorType;
+    private String visitUrl;
 
-    private String operUrl;
+    private String visitIp;
 
-    private String operIp;
+    private String visitLocation;
 
-    private String operLocation;
-
-    private String operParam;
+    private String visitParam;
 
     private String jsonResult;
 
@@ -34,17 +32,16 @@ public class SysHomepageVisitLog implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    public SysHomepageVisitLog(Long visitId, String title, Integer businessType, String method, String requestMethod, Integer operatorType, String operUrl, String operIp, String operLocation, String operParam, String jsonResult, Integer status, String errorMsg, Date visitTime) {
+    public SysHomepageVisitLog(Long visitId, String title, Integer businessType, String method, String requestMethod, String visitUrl, String visitIp, String visitLocation, String visitParam, String jsonResult, Integer status, String errorMsg, Date visitTime) {
         this.visitId = visitId;
         this.title = title;
         this.businessType = businessType;
         this.method = method;
         this.requestMethod = requestMethod;
-        this.operatorType = operatorType;
-        this.operUrl = operUrl;
-        this.operIp = operIp;
-        this.operLocation = operLocation;
-        this.operParam = operParam;
+        this.visitUrl = visitUrl;
+        this.visitIp = visitIp;
+        this.visitLocation = visitLocation;
+        this.visitParam = visitParam;
         this.jsonResult = jsonResult;
         this.status = status;
         this.errorMsg = errorMsg;
@@ -95,44 +92,36 @@ public class SysHomepageVisitLog implements Serializable {
         this.requestMethod = requestMethod == null ? null : requestMethod.trim();
     }
 
-    public Integer getOperatorType() {
-        return operatorType;
+    public String getVisitUrl() {
+        return visitUrl;
     }
 
-    public void setOperatorType(Integer operatorType) {
-        this.operatorType = operatorType;
+    public void setVisitUrl(String visitUrl) {
+        this.visitUrl = visitUrl == null ? null : visitUrl.trim();
     }
 
-    public String getOperUrl() {
-        return operUrl;
+    public String getVisitIp() {
+        return visitIp;
     }
 
-    public void setOperUrl(String operUrl) {
-        this.operUrl = operUrl == null ? null : operUrl.trim();
+    public void setVisitIp(String visitIp) {
+        this.visitIp = visitIp == null ? null : visitIp.trim();
     }
 
-    public String getOperIp() {
-        return operIp;
+    public String getVisitLocation() {
+        return visitLocation;
     }
 
-    public void setOperIp(String operIp) {
-        this.operIp = operIp == null ? null : operIp.trim();
+    public void setVisitLocation(String visitLocation) {
+        this.visitLocation = visitLocation == null ? null : visitLocation.trim();
     }
 
-    public String getOperLocation() {
-        return operLocation;
+    public String getVisitParam() {
+        return visitParam;
     }
 
-    public void setOperLocation(String operLocation) {
-        this.operLocation = operLocation == null ? null : operLocation.trim();
-    }
-
-    public String getOperParam() {
-        return operParam;
-    }
-
-    public void setOperParam(String operParam) {
-        this.operParam = operParam == null ? null : operParam.trim();
+    public void setVisitParam(String visitParam) {
+        this.visitParam = visitParam == null ? null : visitParam.trim();
     }
 
     public String getJsonResult() {

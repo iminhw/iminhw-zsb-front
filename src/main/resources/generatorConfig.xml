@@ -68,10 +68,10 @@
 <!--               enableDeleteByExample="false" enableSelectByExample="false"-->
 <!--               selectByExampleQueryId="false"></table>-->
 <!--        sys_homepage_visit_log-->
-<!--                <table tableName="sys_homepage_visit_log" domainObjectName="SysHomepageVisitLog"-->
-<!--                       enableCountByExample="false" enableUpdateByExample="false"-->
-<!--                       enableDeleteByExample="false" enableSelectByExample="false"-->
-<!--                       selectByExampleQueryId="false"></table>-->
+                <table tableName="sys_homepage_visit_log" domainObjectName="SysHomepageVisitLog"
+                       enableCountByExample="false" enableUpdateByExample="false"
+                       enableDeleteByExample="false" enableSelectByExample="false"
+                       selectByExampleQueryId="false"></table>
 <!--        <table tableName="stu_out_notification" domainObjectName="StuOutNotification"-->
 <!--               enableCountByExample="false" enableUpdateByExample="false"-->
 <!--               enableDeleteByExample="false" enableSelectByExample="false"-->

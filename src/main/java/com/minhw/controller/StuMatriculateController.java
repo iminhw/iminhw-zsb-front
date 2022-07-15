@@ -3,6 +3,7 @@ package com.minhw.controller;
 import com.minhw.common.annotation.Log;
 import com.minhw.common.utils.ResultVo;
 import com.minhw.common.utils.ResultVoUtil;
+import com.minhw.common.utils.StringUtils;
 import com.minhw.entity.StuMatriculate;
 import com.minhw.service.StuMatriculateService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,8 +29,11 @@ public class StuMatriculateController {
 
     @Log(title="查询录取专业")
     @PostMapping("/matriculate")
-    public ResultVo GetMatriculate(StuMatriculate stuMatriculate){
-        return ResultVoUtil.success("操作成功",stuMatriculateService.selectByPrimaryKey(stuMatriculate.getKsh()));
+    public ResultVo GetMatriculate(String ksh){
+        if (StringUtils.isEmpty(ksh)) {
+            return ResultVoUtil.ERROR;
+        }
+        return ResultVoUtil.success("操作成功",stuMatriculateService.selectByPrimaryKey(ksh));
     }
 
     @GetMapping ("/matriculate")

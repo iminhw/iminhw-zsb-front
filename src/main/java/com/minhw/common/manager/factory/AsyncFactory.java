@@ -83,7 +83,7 @@ public class AsyncFactory {
             @Override
             public void run() {
                 // 远程查询操作地点
-                sysHomepageVisitLog.setOperLocation(AddressUtils.getRealAddressByIP(sysHomepageVisitLog.getOperIp()));
+                sysHomepageVisitLog.setVisitLocation(AddressUtils.getRealAddressByIP(sysHomepageVisitLog.getVisitIp()));
                 SpringUtils.getBean(SysHomepageVisitLogService.class).insert(sysHomepageVisitLog);
             }
         };

@@ -3,6 +3,7 @@ package com.minhw.controller;
 import com.minhw.common.annotation.Log;
 import com.minhw.common.utils.ResultVo;
 import com.minhw.common.utils.ResultVoUtil;
+import com.minhw.common.utils.StringUtils;
 import com.minhw.entity.StuOutNotification;
 import com.minhw.service.StuOutNotificationService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,8 +28,11 @@ public class StuOutNotificationController {
 
     @Log(title = "查询通知书快递单号")
     @PostMapping("/outnotification")
-    public ResultVo GetStuOutNotification(StuOutNotification stuOutNotification) {
-        return ResultVoUtil.success("操作成功", stuOutNotificationService.selectByPrimaryKey(stuOutNotification.getKsh()));
+    public ResultVo GetStuOutNotification(String ksh) {
+        if (StringUtils.isEmpty(ksh)) {
+            return ResultVoUtil.ERROR;
+        }
+        return ResultVoUtil.success("操作成功", stuOutNotificationService.selectByPrimaryKey(ksh));
     }
 
     @GetMapping("/outnotification")

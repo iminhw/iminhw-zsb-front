@@ -28,8 +28,9 @@
 <!--<img src="imegs/bg2.jpg">-->
 </body>
 <script>
-<!--  临时使用  -->
-    const urlT = "/api/";
+    <!--  临时使用  -->
+    // const urlT = "/api/";
+    const urlT = "/";
 
     function getKddh() {
         // 发送post请求
@@ -46,7 +47,7 @@
             } else {
                 // box.innerHTML = data.data.xm+" 同学，你好。你被我校 "+data.data.zy + " 录取" ;
                 Swal.fire({
-                   title: data.data.xm + " 同学，你好。你通知书快递单号 " + data.data.kddh,
+                    title: data.data.xm + " 同学，你好。你通知书快递单号 " + data.data.kddh,
                     footer: '<a href="https://www.ems.com.cn/queryList" target="_blank">EMS单号查询</a>',
                 });
             }
@@ -85,7 +86,7 @@
         // post方式要设置请求头
         xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
         // 参数设置在send里面，参数+值
-        xhr.send("ksh=" + document.getElementById("ksh").value )
+        xhr.send("ksh=" + document.getElementById("ksh").value)
     }
 </script>
 </html>

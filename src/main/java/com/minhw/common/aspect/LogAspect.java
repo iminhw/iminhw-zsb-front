@@ -67,8 +67,8 @@ public class LogAspect {
             sysHomepageVisitLog.setStatus(BusinessStatus.SUCCESS.ordinal());
             // 请求的地址
             String ip = IpUtils.getIpAddr(ServletUtils.getRequest());
-            sysHomepageVisitLog.setOperIp(ip);
-            sysHomepageVisitLog.setOperUrl(ServletUtils.getRequest().getRequestURI());
+            sysHomepageVisitLog.setVisitIp(ip);
+            sysHomepageVisitLog.setVisitUrl(ServletUtils.getRequest().getRequestURI());
             if (e != null) {
                 sysHomepageVisitLog.setStatus(BusinessStatus.FAIL.ordinal());
                 sysHomepageVisitLog.setErrorMsg(StringUtils.substring(e.getMessage(), 0, 2000));
@@ -104,7 +104,7 @@ public class LogAspect {
         // 设置标题
         sysHomepageVisitLog.setTitle(log.title());
         // 设置操作人类别
-        sysHomepageVisitLog.setOperatorType(log.operatorType().ordinal());
+//        sysHomepageVisitLog.setv(log.operatorType().ordinal());
         // 是否需要保存request，参数和值
         if (log.isSaveRequestData()) {
             // 获取参数的信息，传入到数据库中。
@@ -126,10 +126,10 @@ public class LogAspect {
         String requestMethod = sysHomepageVisitLog.getRequestMethod();
         if (HttpMethod.PUT.name().equals(requestMethod) || HttpMethod.POST.name().equals(requestMethod)) {
             String params = argsArrayToString(joinPoint.getArgs());
-            sysHomepageVisitLog.setOperParam(StringUtils.substring(params, 0, 2000));
+            sysHomepageVisitLog.setVisitParam(StringUtils.substring(params, 0, 2000));
         } else {
             Map<?, ?> paramsMap = (Map<?, ?>) ServletUtils.getRequest().getAttribute(HandlerMapping.URI_TEMPLATE_VARIABLES_ATTRIBUTE);
-            sysHomepageVisitLog.setOperParam(StringUtils.substring(paramsMap.toString(), 0, 2000));
+            sysHomepageVisitLog.setVisitParam(StringUtils.substring(paramsMap.toString(), 0, 2000));
         }
     }
 
