@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>录取专业查询</title>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
+</head>
+
+<body>
+<h4>输入考生号或身份证号查询录取专业</h4>
+<h5>录取通知书快递单号仅支持考生号查询</h5>
+<br/>
+<label for="ksh" title="考生号">考生号
+    <input type="text" placeholder="请输入考生号" id="ksh">
+</label>
+<br/>
+<label for="sfzh" title="身份证号">身份证号
+    <input type="text" placeholder="请输入身份证号" id="sfzh">
+</label>
+<br/>
+<input type="button" value="查询录取专业" onclick="getZy()">
+<input type="button" value="查询通知书单号" onclick="getKddh()">
+<div class="msg"></div>
+<!--<img src="imegs/bg2.jpg">-->
+</body>
+<script>
+<!--  临时使用  -->
+    const urlT = "/";
+
+    function getKddh() {
+        // 发送post请求
+        const xhr = new XMLHttpRequest
+        xhr.onloadend = function () {
+            // 接收请求后端返回的数据
+            let result = xhr.responseText
+            const data = JSON.parse(result)
+            console.log(data);
+            const box = document.querySelector(".msg")
+            if (data.data == null) {
+                // box.innerHTML = "暂未查询到您的录取结果"
+                Swal.fire("暂未查询到你的快递单号")
+            } else {
+                // box.innerHTML = data.data.xm+" 同学，你好。你被我校 "+data.data.zy + " 录取" ;
+                Swal.fire({
+                   title: data.data.xm + " 同学，你好。你通知书快递单号 " + data.data.kddh,
+                    footer: '<a href="https://www.ems.com.cn/queryList" target="_blank">EMS单号查询</a>',
+                });
+            }
+
+        }
+        // 设置发送方式以及api
+        xhr.open("post", urlT + 'stu/outnotification')
+        // post方式要设置请求头
+        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+        // 参数设置在send里面，参数+值
+        xhr.send("ksh=" + document.getElementById("ksh").value)
+    }
+
+    function getZy() {
+        // 发送post请求
+        const xhr = new XMLHttpRequest
+        xhr.onloadend = function () {
+            // 接收请求后端返回的数据
+            let result = xhr.responseText
+            const data = JSON.parse(result)
+            console.log(data);
+            const box = document.querySelector(".msg")
+            if (data.data == null) {
+                // box.innerHTML = "暂未查询到您的录取结果"
+                Swal.fire("暂未查询到你的录取结果")
+            } else {
+                // box.innerHTML = data.data.xm+" 同学，你好。你被我校 "+data.data.zy + " 录取" ;
+                Swal.fire(
+                    data.data.xm + " 同学，你好。你被我校 " + data.data.zy + " 录取"
+                );
+            }
+
+        }
+        // 设置发送方式以及api
+        xhr.open("post", urlT + 'stu/matriculate')
+        // post方式要设置请求头
+        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+        // 参数设置在send里面，参数+值
+        xhr.send("ksh=" + document.getElementById("ksh").value + "&sfzh=" + document.getElementById("sfzh").value)
+    }
+</script>
+</html>
