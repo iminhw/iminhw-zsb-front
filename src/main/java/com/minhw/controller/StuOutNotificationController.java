@@ -1,5 +1,6 @@
 package com.minhw.controller;
 
+import com.minhw.common.IminhwRuntimeException;
 import com.minhw.common.annotation.Log;
 import com.minhw.common.utils.ResultVo;
 import com.minhw.common.utils.ResultVoUtil;
@@ -30,7 +31,7 @@ public class StuOutNotificationController {
     @PostMapping("/outnotification")
     public ResultVo GetStuOutNotification(String ksh) {
         if (StringUtils.isEmpty(ksh)) {
-            return ResultVoUtil.ERROR;
+            throw new IminhwRuntimeException("考生号不能为空");
         }
         return ResultVoUtil.success("操作成功", stuOutNotificationService.selectByPrimaryKey(ksh));
     }

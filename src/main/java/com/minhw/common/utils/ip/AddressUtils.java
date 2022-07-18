@@ -31,10 +31,10 @@ public class AddressUtils {
                 return UNKNOWN;
             }
             JSONObject obj = JSON.parseObject(rspStr);
-//            String region = obj.getString("pro");
-//            String city = obj.getString("city");
-            String addr = obj.getString("addr");
-            return String.format("%s", addr);
+            String region = obj.getString("pro");
+            String city = obj.getString("city");
+//            String addr = obj.getString("addr");
+            return String.format("%s %s", region, city);
         } catch (Exception e) {
             log.error("获取地理位置异常 {}", ip);
         }
