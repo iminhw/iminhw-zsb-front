@@ -11,7 +11,7 @@ public enum ResultEnum implements ResultInterface {
      * 通用状态
      */
     SUCCESS(200, "成功"),
-    ERROR(400, "错误"),
+    ERROR(500, "错误"),
 
     /**
      * 账户问题
@@ -24,7 +24,7 @@ public enum ResultEnum implements ResultInterface {
     USER_CAPTCHA_ERROR(406, "验证码错误"),
 
     USER_LOGIN_SUCCESS(200,"登陆成功"),
-    USER_LOGIN_UP_NULL(500,"账户已被冻结或不存在"),
+    USER_LOGIN_UP_NULL(400,"账户已被冻结或不存在"),
     USER_LOGIN_ERROR(400,"账号或密码错误"),
 
     /**

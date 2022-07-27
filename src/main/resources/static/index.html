@@ -29,8 +29,9 @@
 </body>
 <script>
     <!--  临时使用  -->
-    // const urlT = "/api/";
-    const urlT = "/";
+    const urlT = "/api/";
+
+    // const urlT = "/";
 
     function getKddh() {
         // 发送post请求
@@ -89,4 +90,26 @@
         xhr.send("ksh=" + document.getElementById("ksh").value)
     }
 </script>
+<!-- 背景音乐 -->
+<!--<audio autoplay="autoplay" controls="controls" loop="loop" preload="auto" src="/api/map3"></audio>-->
+<!-- 背景视频 -->
+<video src="/api/video" loop="loop" muted autoplay="autoplay"></video>
+<style type="text/css">
+    audio {
+        display: none;
+    }
+
+    video {
+        position: fixed;
+        right: 0px;
+        bottom: 0px;
+        max-width: 100%;
+        min-height: 100%;
+        height: auto;
+        width: auto;
+        z-index: -100;
+        /*灰色调*/
+        /*-webkit-filter:grayscale(100%)*/
+    }
+</style>
 </html>
