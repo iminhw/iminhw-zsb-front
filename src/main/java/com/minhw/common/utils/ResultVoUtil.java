@@ -23,7 +23,7 @@ public class ResultVoUtil {
     public static ResultVo success(Integer code, String msg, Object object){
         ResultVo<Object> resultVo = new ResultVo<>();
         resultVo.setMessage(msg);
-        resultVo.setStatus(code);
+        resultVo.setCode(code);
         resultVo.setData(object);
         return resultVo;
     }
@@ -31,7 +31,7 @@ public class ResultVoUtil {
     public static ResultVo success(Integer code, String msg){
         ResultVo<Object> resultVo = new ResultVo<>();
         resultVo.setMessage(msg);
-        resultVo.setStatus(code);
+        resultVo.setCode(code);
         return resultVo;
     }
 
@@ -45,7 +45,7 @@ public class ResultVoUtil {
     public static ResultVo success(String msg, Object object){
         ResultVo<Object> resultVo = new ResultVo<>();
         resultVo.setMessage(msg);
-        resultVo.setStatus(ResultEnum.SUCCESS.getStatus());
+        resultVo.setCode(ResultEnum.SUCCESS.getCode());
         resultVo.setData(object);
         return resultVo;
     }
@@ -83,7 +83,7 @@ public class ResultVoUtil {
     public static ResultVo error(Integer code, String msg){
         ResultVo resultVo = new ResultVo();
         resultVo.setMessage(msg);
-        resultVo.setStatus(code);
+        resultVo.setCode(code);
         return resultVo;
     }
 
@@ -92,7 +92,7 @@ public class ResultVoUtil {
      * @param msg 提示信息
      */
     public static ResultVo error(String msg){
-        Integer code = ResultEnum.ERROR.getStatus();
+        Integer code = ResultEnum.ERROR.getCode();
         return error(code, msg);
     }
 

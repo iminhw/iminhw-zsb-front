@@ -1,17 +1,15 @@
 package com.minhw.controller;
 
-import com.minhw.common.IminhwRuntimeException;
+import com.minhw.common.BaseController;
 import com.minhw.common.annotation.Log;
 import com.minhw.common.utils.ResultVo;
 import com.minhw.common.utils.ResultVoUtil;
-import com.minhw.common.utils.StringUtils;
 import com.minhw.entity.StuOutNotification;
 import com.minhw.service.StuOutNotificationService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import javax.validation.Valid;
 
 /**
  * @program: iminhw-zsb-front
@@ -22,22 +20,20 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController()
 @RequestMapping("/stu")
-public class StuOutNotificationController {
+public class StuOutNotificationController extends BaseController {
 
     @Autowired
     private StuOutNotificationService stuOutNotificationService;
 
     @Log(title = "查询通知书快递单号")
-    @PostMapping("/outnotification")
-    public ResultVo GetStuOutNotification(String ksh) {
-        if (StringUtils.isEmpty(ksh)) {
-            throw new IminhwRuntimeException("考生号不能为空");
-        }
-        return ResultVoUtil.success("操作成功", stuOutNotificationService.selectByPrimaryKey(ksh));
+    @GetMapping("/outnotification/{ksh}")
+    public String GetStuOutNotification(@PathVariable("ksh") String ksh) {
+        return aesStr(ResultVoUtil.success("成功", stuOutNotificationService.selectByPrimaryKey(ksh)));
     }
 
-    @GetMapping("/outnotification")
-    public ResultVo StuOutNotification() {
-        return ResultVoUtil.ERROR;
-    }
+//    @PostMapping("/outnotification")
+//    public ResultVo StuOutNotification(@RequestBody @Valid StuOutNotification stuOutNotification) {
+//        System.out.println(stuOutNotification);
+//        return ResultVoUtil.ERROR;
+//    }
 }

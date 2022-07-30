@@ -72,18 +72,18 @@ public enum ResultEnum implements ResultInterface {
 
     ;
 
-    private Integer status;
+    private Integer code;
 
     private String message;
 
-    ResultEnum(Integer status, String message) {
-        this.status = status;
+    ResultEnum(Integer code, String message) {
+        this.code = code;
         this.message = message;
     }
 
     @Override
-    public Integer getStatus() {
-        return status;
+    public Integer getCode() {
+        return code;
     }
     @Override
     public String getMessage() {

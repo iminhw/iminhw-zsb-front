@@ -1,16 +1,19 @@
 package com.minhw.controller;
 
-import com.minhw.common.IminhwRuntimeException;
+import com.alibaba.fastjson2.JSONObject;
+import com.minhw.common.BaseController;
 import com.minhw.common.annotation.Log;
+import com.minhw.common.enums.ResultEnum;
+import com.minhw.common.exception.IminhwRuntimeException;
+import com.minhw.common.utils.AESUtils;
 import com.minhw.common.utils.ResultVo;
 import com.minhw.common.utils.ResultVoUtil;
-import com.minhw.common.utils.StringUtils;
+import com.minhw.entity.StuMatriculate;
 import com.minhw.service.StuMatriculateService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import javax.validation.Valid;
 
 /**
  * @program: iminhw-zsb-front
@@ -18,25 +21,34 @@ import org.springframework.web.bind.annotation.RestController;
  * @author: MinHw or mz
  * @create: 2022-07-14 20:04
  **/
-
 @RestController()
 @RequestMapping("/stu")
-public class StuMatriculateController {
+public class StuMatriculateController extends BaseController {
 
     @Autowired
     private StuMatriculateService stuMatriculateService;
 
     @Log(title="查询录取专业")
-    @PostMapping("/matriculate")
-    public ResultVo GetMatriculate(String ksh){
-        if (StringUtils.isEmpty(ksh)) {
-            throw new IminhwRuntimeException("考生号不能为空", 200);
-        }
-        return ResultVoUtil.success("操作成功",stuMatriculateService.selectByPrimaryKey(ksh));
+    @GetMapping("/matriculate/{ksh}")
+    public String GetMatriculate(@PathVariable("ksh") String ksh){
+        ResultVo resultVo = ResultVoUtil.success("成功", stuMatriculateService.selectByPrimaryKey(ksh));
+        return aesStr(resultVo);
     }
 
-    @GetMapping ("/matriculate")
-    public ResultVo Matriculate(){
-        return ResultVoUtil.ERROR;
-    }
+    /**
+     * @Valid
+     * @param stuMatriculate
+     * @return
+     */
+//    @Log(title="测试查询录取专业")
+//    @PostMapping("/test")
+//    public ResultVo stuTest(@Valid StuMatriculate stuMatriculate) {
+//        System.out.println(stuMatriculate.toString());
+//        try {
+////            System.out.println(RsaUtils.decrypt(stuMatriculate.getKsh()));
+//        } catch (Exception e) {
+//            throw new IminhwRuntimeException(e);
+//        }
+//        return ResultVoUtil.ERROR;
+//    }
 }

@@ -8,7 +8,7 @@ package com.minhw.common.utils;
 public class ResultVo<T> {
 
     /** 状态码 */
-    private Integer status;
+    private Integer code;
 
     /** 提示信息 */
     private String message;
@@ -16,12 +16,12 @@ public class ResultVo<T> {
     /** 响应数据 */
     private T data;
 
-    public Integer getStatus() {
-        return status;
+    public Integer getCode() {
+        return code;
     }
 
-    public void setStatus(Integer status) {
-        this.status = status;
+    public void setCode(Integer code) {
+        this.code = code;
     }
 
     public String getMessage() {

@@ -1,4 +1,4 @@
-package com.minhw.common;
+package com.minhw.common.exception;
 
 
 /**
@@ -34,6 +34,9 @@ public final class IminhwRuntimeException extends RuntimeException {
      * 空构造方法，避免反序列化问题
      */
 
+    public IminhwRuntimeException(Throwable throwable) {
+        super(throwable);
+    }
 
     public IminhwRuntimeException(String message) {
         this.message = message;
