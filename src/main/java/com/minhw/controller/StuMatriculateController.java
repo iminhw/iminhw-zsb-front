@@ -32,11 +32,19 @@ public class StuMatriculateController extends BaseController {
     @Autowired
     private StuMatriculateService stuMatriculateService;
 
+    @Autowired
+    private SysHomepageVisitLogService sysHomepageVisitLogService;
+
     @Log(title="查询录取专业")
     @GetMapping("/matriculate/{ksh}")
     public String GetMatriculate(@PathVariable("ksh") String ksh){
-        ResultVo resultVo = ResultVoUtil.success("成功", stuMatriculateService.selectByPrimaryKey(ksh));
-        return aesStr(resultVo);
+        final String ip = IpUtils.getIpAddr(ServletUtils.getRequest());
+        if (sysHomepageVisitLogService.selectByvisitIp(ip) > 20){
+            return aesStr(ResultVoUtil.error("你的行为异常！！!"));
+        } else {
+            ResultVo resultVo = ResultVoUtil.success("成功", stuMatriculateService.selectByPrimaryKey(ksh));
+            return aesStr(resultVo);
+        }
     }
 
     /**
