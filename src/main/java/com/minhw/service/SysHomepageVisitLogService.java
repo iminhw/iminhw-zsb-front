@@ -2,6 +2,8 @@ package com.minhw.service;
 
 import com.minhw.entity.SysHomepageVisitLog;
 
+import java.util.List;
+
 /**
  * @program: iminhw-zsb-front
  * @description:
@@ -20,4 +22,6 @@ public interface SysHomepageVisitLogService {
     int updateByPrimaryKeySelective(SysHomepageVisitLog record);
 
     int updateByPrimaryKey(SysHomepageVisitLog record);
+
+    int selectByvisitIp(String visitIp);
 }

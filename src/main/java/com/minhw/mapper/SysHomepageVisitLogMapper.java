@@ -2,6 +2,8 @@ package com.minhw.mapper;
 
 import com.minhw.entity.SysHomepageVisitLog;
 
+import java.util.List;
+
 public interface SysHomepageVisitLogMapper {
     int deleteByPrimaryKey(Long visitId);
 
@@ -14,4 +16,6 @@ public interface SysHomepageVisitLogMapper {
     int updateByPrimaryKeySelective(SysHomepageVisitLog record);
 
     int updateByPrimaryKey(SysHomepageVisitLog record);
+
+    int selectByvisitIp(String visitIp);
 }

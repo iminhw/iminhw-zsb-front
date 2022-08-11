@@ -6,6 +6,8 @@ import com.minhw.service.SysHomepageVisitLogService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 /**
  * @program: iminhw-zsb-front
  * @description:
@@ -48,5 +50,10 @@ public class SysHomepageVisitLogServiceImp implements SysHomepageVisitLogService
     @Override
     public int updateByPrimaryKey(SysHomepageVisitLog record) {
         return 0;
+    }
+
+    @Override
+    public int selectByvisitIp(String visitIp) {
+        return sysHomepageVisitLogMapper.selectByvisitIp(visitIp);
     }
 }
