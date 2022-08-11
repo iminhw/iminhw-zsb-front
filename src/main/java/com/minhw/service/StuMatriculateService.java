@@ -11,4 +11,6 @@ import com.minhw.entity.StuMatriculate;
 public interface StuMatriculateService {
 
     StuMatriculate selectByPrimaryKey(String ksh);
+
+    StuMatriculate selectStuMatriculate(StuMatriculate stuMatriculate);
 }

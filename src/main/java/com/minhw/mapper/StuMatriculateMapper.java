@@ -11,6 +11,8 @@ public interface StuMatriculateMapper {
 //
     StuMatriculate selectByPrimaryKey(String ksh);
 
+    StuMatriculate selectStuMatriculate(StuMatriculate stuMatriculate);
+
 //    int updateByPrimaryKeySelective(StuMatriculate record);
 //
 //    int updateByPrimaryKey(StuMatriculate record);

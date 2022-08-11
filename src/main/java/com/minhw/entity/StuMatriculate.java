@@ -1,16 +1,17 @@
 package com.minhw.entity;
 
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 import java.io.Serializable;
-import java.util.Date;
 
 public class StuMatriculate implements Serializable {
-//    @NotEmpty(message = "考生号为空")
-    @Size(min = 8, message = "考生号错误")
+    @NotEmpty(message = "考生号不能为空")
+    @Size(min = 8, message = "考生号格式错误")
+    @Pattern(regexp = "^[0-9]*$", message = "考生号格式错误")
     private String ksh;
-//    @NotEmpty(message = "身份证号码为空")
-    @Size(min = 18, message = "身份证号码错误")
+    @NotEmpty(message = "身份证号不能为空")
+    @Pattern(regexp = "^([1-6][1-9]|50)\\d{4}(18|19|20)\\d{2}((0[1-9])|10|11|12)(([0-2][1-9])|10|20|30|31)\\d{3}[0-9Xx]$", message = "身份证号格式错误")
     private String sfzh;
 
     private String xm;
@@ -57,5 +58,15 @@ public class StuMatriculate implements Serializable {
 
     public void setZy(String zy) {
         this.zy = zy;
+    }
+
+    @Override
+    public String toString() {
+        return "StuMatriculate{" +
+                "ksh='" + ksh + '\'' +
+                ", sfzh='" + sfzh + '\'' +
+                ", xm='" + xm + '\'' +
+                ", zy='" + zy + '\'' +
+                '}';
     }
 }

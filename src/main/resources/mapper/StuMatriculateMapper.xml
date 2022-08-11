@@ -29,5 +29,12 @@
         where ksh = #{ksh,jdbcType=VARCHAR} and status = 0;
     </select>
 
+    <select id="selectStuMatriculate" parameterType="com.minhw.entity.StuMatriculate" resultMap="BaseResultMap" >
+        select
+        <include refid="Base_Column_List"/>
+        from stu_matriculate
+        where ksh = #{ksh,jdbcType=VARCHAR} and sfzh = #{sfzh,jdbcType=VARCHAR} and status = 0;
+    </select>
+
 
 </mapper>

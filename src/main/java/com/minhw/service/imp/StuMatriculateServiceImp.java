@@ -34,4 +34,9 @@ public class StuMatriculateServiceImp implements StuMatriculateService {
 //        }
         return stuMatriculateMapper.selectByPrimaryKey(ksh);
     }
+
+    @Override
+    public StuMatriculate selectStuMatriculate(StuMatriculate stuMatriculate) {
+        return stuMatriculateMapper.selectStuMatriculate(stuMatriculate);
+    }
 }

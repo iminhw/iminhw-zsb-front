@@ -1,5 +1,9 @@
 package com.minhw.common.utils;
 
+import com.alibaba.fastjson2.JSONObject;
+import com.minhw.common.enums.ResultEnum;
+import com.minhw.common.exception.IminhwRuntimeException;
+
 import javax.crypto.Cipher;
 import javax.crypto.SecretKey;
 import javax.crypto.spec.SecretKeySpec;
@@ -31,6 +35,15 @@ public class AESUtils {
      * 秘钥对象
      */
     private static final SecretKey secKey = new SecretKeySpec(key.getBytes(), KEY_ALGORITHM);
+
+    public static String aesStr(ResultVo resultVo) {
+        String jsonAlias = JSONObject.toJSONString(resultVo);
+        try {
+            return encrypt(jsonAlias);
+        } catch (Exception e) {
+            throw new IminhwRuntimeException("加密异常", ResultEnum.ERROR.getCode());
+        }
+    }
 
     /**
      * 数据加密: 明文 -> 密文
