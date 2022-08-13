@@ -20,8 +20,14 @@ public class StuOutNotificationServiceImp implements StuOutNotificationService {
     private StuOutNotificationMapper stuOutNotificationMapper;
 
 
+//    @Override
+//    public StuOutNotification selectByPrimaryKey(String ksh) {
+//        return stuOutNotificationMapper.selectByPrimaryKey(ksh);
+//    }
+
     @Override
-    public StuOutNotification selectByPrimaryKey(String ksh) {
-        return stuOutNotificationMapper.selectByPrimaryKey(ksh);
+    public StuOutNotification selectStuOutNotification(StuOutNotification stuOutNotification) {
+        return stuOutNotificationMapper.selectStuOutNotification(stuOutNotification);
     }
+
 }

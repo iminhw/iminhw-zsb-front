@@ -2,6 +2,9 @@ package com.minhw.mapper;
 
 import com.minhw.entity.StuOutNotification;
 
+/**
+ * stu_out_notification_view
+ */
 public interface StuOutNotificationMapper {
 //    int deleteByPrimaryKey(String ksh);
 //
@@ -9,7 +12,9 @@ public interface StuOutNotificationMapper {
 //
 //    int insertSelective(StuOutNotification record);
 
-    StuOutNotification selectByPrimaryKey(String ksh);
+//    StuOutNotification selectByPrimaryKey(String ksh);
+
+    StuOutNotification selectStuOutNotification(StuOutNotification stuOutNotification);
 //
 //    int updateByPrimaryKeySelective(StuOutNotification record);
 //

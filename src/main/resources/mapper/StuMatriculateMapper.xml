@@ -19,7 +19,7 @@
     </resultMap>
     <sql id="Base_Column_List">
         ksh
-        , sfzh, xm, zy
+        ,sfzh, xm, zy
     </sql>
     <!--  lxdh, dz, status, create_by, update_by, remark, update_time, create_time-->
     <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
@@ -29,7 +29,7 @@
         where ksh = #{ksh,jdbcType=VARCHAR} and status = 0;
     </select>
 
-    <select id="selectStuMatriculate" parameterType="com.minhw.entity.StuMatriculate" resultMap="BaseResultMap" >
+    <select id="selectStuMatriculate" parameterType="com.minhw.entity.StuMatriculate" resultMap="BaseResultMap">
         select
         <include refid="Base_Column_List"/>
         from stu_matriculate

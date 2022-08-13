@@ -10,5 +10,7 @@ import com.minhw.entity.StuOutNotification;
  **/
 public interface StuOutNotificationService {
 
-    StuOutNotification selectByPrimaryKey(String ksh);
+//    StuOutNotification selectByPrimaryKey(String ksh);
+
+    StuOutNotification selectStuOutNotification(StuOutNotification stuOutNotification);
 }

@@ -35,14 +35,13 @@ public class StuMatriculateController extends BaseController {
     @Log(title = "查询录取专业")
     @PostMapping("/matriculate")
     public String PostMatriculate(@Valid @RequestBody StuMatriculate stuMatriculate) {
-        final String ip = IpUtils.getIpAddr(ServletUtils.getRequest());
-        System.out.println(stuMatriculate);
-        if (sysHomepageVisitLogService.selectByvisitIp(ip) > 20) {
-            return aesStr(ResultVoUtil.error("你的行为异常！！!"));
-        } else {
+//        final String ip = IpUtils.getIpAddr(ServletUtils.getRequest());
+//        if (sysHomepageVisitLogService.selectByvisitIp(ip) > 20) {
+//            return aesStr(ResultVoUtil.error("你的行为异常！！!"));
+//        } else {
             ResultVo resultVo = ResultVoUtil.success("成功", stuMatriculateService.selectStuMatriculate(stuMatriculate));
             return aesStr(resultVo);
-        }
+//        }
     }
 
     @GetMapping("/matriculate")

@@ -32,18 +32,20 @@ public class StuOutNotificationController extends BaseController {
     private SysHomepageVisitLogService sysHomepageVisitLogService;
 
     @Log(title = "查询通知书快递单号")
-    @GetMapping("/outnotification/{ksh}")
-    public String GetStuOutNotification(@PathVariable("ksh") String ksh) {
-        final String ip = IpUtils.getIpAddr(ServletUtils.getRequest());
-        if (sysHomepageVisitLogService.selectByvisitIp(ip) > 20){
-            return aesStr(ResultVoUtil.error("你的行为异常！！!"));
-        }
-        return aesStr(ResultVoUtil.success("成功", stuOutNotificationService.selectByPrimaryKey(ksh)));
+    @PostMapping("/outnotification")
+    public String GetStuOutNotification(@Valid @RequestBody StuOutNotification stuOutNotification) {
+//        final String ip = IpUtils.getIpAddr(ServletUtils.getRequest());
+//        if (sysHomepageVisitLogService.selectByvisitIp(ip) > 20){
+//            return aesStr(ResultVoUtil.error("你的行为异常！！!"));
+//        }else {
+            return aesStr(ResultVoUtil.success("成功", stuOutNotificationService.selectStuOutNotification(stuOutNotification)));
+//        }
     }
 
-//    @PostMapping("/outnotification")
-//    public ResultVo StuOutNotification(@RequestBody @Valid StuOutNotification stuOutNotification) {
-//        System.out.println(stuOutNotification);
-//        return ResultVoUtil.ERROR;
-//    }
+    @GetMapping("/outnotification")
+    public ResultVo GetMatriculate() {
+        return ResultVoUtil.error("你的行为异常！！!");
+    }
+
+
 }

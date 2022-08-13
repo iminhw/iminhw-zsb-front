@@ -4,6 +4,7 @@
     <resultMap id="BaseResultMap" type="com.minhw.entity.StuOutNotification">
         <constructor>
             <idArg column="ksh" javaType="java.lang.String" jdbcType="VARCHAR"/>
+            <arg column="sfzh" javaType="java.lang.String" jdbcType="VARCHAR"/>
             <arg column="kddh" javaType="java.lang.String" jdbcType="VARCHAR"/>
             <arg column="xm" javaType="java.lang.String" jdbcType="VARCHAR"/>
             <!--      <arg column="yzbh" javaType="java.lang.String" jdbcType="VARCHAR" />-->
@@ -19,15 +20,22 @@
     </resultMap>
     <sql id="Base_Column_List">
         ksh
-        , kddh, xm
+        ,sfzh,kddh, xm
     </sql>
     <!--  , yzbh, lxdh, yjdz, status, create_by, update_by, remark, update_time,
         create_time-->
-    <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+<!--    <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">-->
+<!--        select-->
+<!--        <include refid="Base_Column_List"/>-->
+<!--        from stu_out_notification-->
+<!--        where ksh = #{ksh,jdbcType=VARCHAR} and status = 0;-->
+<!--    </select>-->
+
+    <select id="selectStuOutNotification" parameterType="com.minhw.entity.StuOutNotification" resultMap="BaseResultMap">
         select
         <include refid="Base_Column_List"/>
-        from stu_out_notification
-        where ksh = #{ksh,jdbcType=VARCHAR} and status = 0;
+        from stu_out_notification_view
+        where ksh = #{ksh,jdbcType=VARCHAR} and sfzh = #{sfzh,jdbcType=VARCHAR} and status = 0;
     </select>
 
 </mapper>
